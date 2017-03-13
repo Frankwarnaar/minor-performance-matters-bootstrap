@@ -1,1 +1,102 @@
-index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include '../../_base/app-meta.html' %}
+
+    <style type="text/css">
+        html {
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+        }
+
+        body {
+          margin: 0;
+        }
+
+        * {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        :after,
+        :before {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        html {
+          font-size: 10px;
+        }
+
+        body {
+          font-size: 14px;
+          line-height: 1.42857143;
+          color: #333;
+          background-color: #fff;
+        }
+
+        @-ms-viewport {
+          width: device-width;
+        }
+
+        html {
+          font-family: source_sans_pro,sans-serif;
+        }
+
+        @font-face {
+          font-family: source_sans_pro;
+          src: url(/dist/fonts/sourcesanspro-it.woff2) format('woff2'),url(/dist/fonts/sourcesanspro-it.woff) format('woff');
+          font-weight: 400;
+          font-style: italic;
+        }
+
+        @font-face {
+          font-family: source_sans_pro;
+          src: url(/dist/fonts/sourcesanspro-light.woff2) format('woff2'),url(/dist/fonts/sourcesanspro-light.woff) format('woff');
+          font-weight: 300;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: source_sans_pro;
+          src: url(/dist/fonts/sourcesanspro-lightit.woff2) format('woff2'),url(/dist/fonts/sourcesanspro-lightit.woff) format('woff');
+          font-weight: 300;
+          font-style: italic;
+        }
+
+        @font-face {
+          font-family: source_sans_pro;
+          src: url(/dist/fonts/sourcesanspro-regular.woff2) format('woff2'),url(/dist/fonts/sourcesanspro-regular.woff) format('woff');
+          font-weight: 400;
+          font-style: normal;
+        }
+
+        body {
+          position: relative;
+        }
+
+    </style>
+    <link href="/dist/css/fonts.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="/dist/css/fonts.css" rel="stylesheet"></noscript>
+    <link href="/dist/css/bootstrap.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="/dist/css/bootstrap.css" rel="stylesheet"></noscript>
+    <link href="/assets/css/src/docs.css" rel="preload" as="style" onload="this.rel='stylesheet'">
+    <noscript><link href="/assets/css/src/docs.css" rel="stylesheet"></noscript>
+    <script>!function(e){"use strict";var t=function(t,n,r){function o(e){return i.body?e():void setTimeout(function(){o(e)})}function a(){d.addEventListener&&d.removeEventListener("load",a),d.media=r||"all"}var l,i=e.document,d=i.createElement("link");if(n)l=n;else{var s=(i.body||i.getElementsByTagName("head")[0]).childNodes;l=s[s.length-1]}var u=i.styleSheets;d.rel="stylesheet",d.href=t,d.media="only x",o(function(){l.parentNode.insertBefore(d,n?l:l.nextSibling)});var f=function(e){for(var t=d.href,n=u.length;n--;)if(u[n].href===t)return e();setTimeout(function(){f(e)})};return d.addEventListener&&d.addEventListener("load",a),d.onloadcssdefined=f,f(a),d};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this),function(e){if(e.loadCSS){var t=loadCSS.relpreload={};if(t.support=function(){try{return e.document.createElement("link").relList.supports("preload")}catch(e){return!1}},t.poly=function(){for(var t=e.document.getElementsByTagName("link"),n=0;n<t.length;n++){var r=t[n];"preload"===r.rel&&"style"===r.getAttribute("as")&&(e.loadCSS(r.href,r,r.getAttribute("media")),r.rel=null)}},!t.support()){t.poly();var n=e.setInterval(t.poly,300);e.addEventListener&&e.addEventListener("load",function(){t.poly(),e.clearInterval(n)}),e.attachEvent&&e.attachEvent("onload",function(){e.clearInterval(n)})}}}(this);</script>
+
+    {% block head_extra %}{% endblock %}
+</head>
+
+<body {%="" block="" body_attributes="" %}{%="" endblock="" %}="">
+
+    {% block body %}{% endblock %}
+
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/dist/js/bootstrap.js"></script>
+    <script src="/assets/js/docs.min.js"></script>
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+    {% block scripts_extra %}{% endblock %}
+</body>
+</html>

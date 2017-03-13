@@ -1,132 +1,677 @@
-{% extends "build/_base/layout.html" %}
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 
-{%- block body_attributes %}class="bs-docs-home"{% endblock -%}
+body {
+  margin: 0;
+}
 
-{% block body %}
-<a class="sr-only sr-only-focusable" href="#content" id="skippy">
-    <div class="container">
-        <span class="skiplink-text">Skip to main content</span>
-    </div></a> <a class="v4-tease" href="https://v4-alpha.getbootstrap.com/">Aww yeah, Bootstrap 4 is coming!</a>
-<header class="bs-docs-nav navbar navbar-static-top" id="top">
-    <div class="container">
-        <div class="navbar-header">
-            <button aria-controls="bs-navbar" aria-expanded="false" class="collapsed navbar-toggle" data-target="#bs-navbar" data-toggle="collapse" type="button"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../">Bootstrap</a>
-        </div>
-        <nav class="collapse navbar-collapse" id="bs-navbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="../getting-started/">Getting started</a>
-                </li>
-                <li>
-                    <a href="../css/">CSS</a>
-                </li>
-                <li>
-                    <a href="../components/">Components</a>
-                </li>
-                <li>
-                    <a href="../javascript/">JavaScript</a>
-                </li>
-                <li>
-                    <a href="../customize/">Customize</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="http://themes.getbootstrap.com" onclick="ga(" send","event","navbar","community="" links","themes")"="">Themes</a>
-                </li>
-                <li>
-                    <a href="http://expo.getbootstrap.com" onclick="ga(" send","event","navbar","community="" links","expo")"="">Expo</a>
-                </li>
-                <li>
-                    <a href="http://blog.getbootstrap.com" onclick="ga(" send","event","navbar","community="" links","blog")"="">Blog</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-<main class="bs-docs-masthead" id="content" tabindex="-1">
-    <div class="container">
-        <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">B</span>
-        <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
-        <p class="lead"><a class="btn btn-outline-inverse btn-lg" href="getting-started#download" onclick="ga(" send","event","jumbotron="" actions","download","download="" 3.3.7")"="">Download Bootstrap</a></p>
-        <p class="version">Currently v3.3.7</p>
-    </div>
-</main>
-<div class="bs-docs-featurette">
-    <div class="container">
-        <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
-        <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
-        <hr class="half-rule">
-        <div class="row">
-            <div class="col-sm-4">
-                <img alt="Sass and Less support" class="img-responsive" src="/assets/img/sass-less.png">
-                <h3>Preprocessors</h3>
-                <p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, <a href="../css/#less">Less</a> and <a href="../css/#sass">Sass</a>. Quickly get started with precompiled CSS or build on the source.</p>
-            </div>
-            <div class="col-sm-4">
-                <img alt="Responsive across devices" class="img-responsive" src="/assets/img/devices.png">
-                <h3>One framework, every device.</h3>
-                <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
-            </div>
-            <div class="col-sm-4">
-                <img alt="Components" class="img-responsive" src="/assets/img/components.png">
-                <h3>Full of features</h3>
-                <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
-            </div>
-        </div>
-        <hr class="half-rule">
-        <p class="lead">Bootstrap is open source. It's hosted, developed, and maintained on GitHub.</p><a class="btn btn-outline btn-lg" href="https://github.com/twbs/bootstrap">View the GitHub project</a>
-    </div>
-</div>
-<div class="bs-docs-featurette">
-    <div class="container">
-        <h2 class="bs-docs-featurette-title">Built with Bootstrap.</h2>
-        <p class="lead">Millions of amazing sites across the web are being built with Bootstrap. Get started on your own with our growing <a href="../getting-started/#examples">collection of examples</a> or by exploring some of our favorites.</p>
-        <hr class="half-rule">
-        <div class="row bs-docs-featured-sites">
-            <div class="col-xs-6 col-sm-3">
-                <a href="http://expo.getbootstrap.com/2014/10/29/lyft/" target="_blank" title="Lyft">
-                    <img alt="Lyft" src="/assets/img/expo-lyft.jpg" class="img-responsive">
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <a href="http://expo.getbootstrap.com/2014/09/30/vogue/" target="_blank" title="Vogue">
-                    <img alt="Vogue" class="img-responsive" src="/assets/img/expo-vogue.jpg">
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <a href="http://expo.getbootstrap.com/2014/03/13/riot-design/" target="_blank" title="Riot Design">
-                    <img alt="Riot Design" class="img-responsive" src="/assets/img/expo-riot.jpg">
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-3">
-                <a href="http://expo.getbootstrap.com/2014/02/12/newsweek/" target="_blank" title="Newsweek">
-                    <img alt="Newsweek" class="img-responsive" src="/assets/img/expo-newsweek.jpg">
-                </a>
-            </div>
-        </div>
-        <hr class="half-rule">
-        <p class="lead">We showcase dozens of inspiring projects built with Bootstrap on the Bootstrap Expo.</p><a class="btn btn-outline btn-lg" href="http://expo.getbootstrap.com">Explore the Expo</a>
-    </div>
-</div>
-<footer class="bs-docs-footer">
-    <div class="container">
-        <ul class="bs-docs-footer-links">
-            <li>
-                <a href="https://github.com/twbs/bootstrap">GitHub</a>
-            </li>
-            <li>
-                <a href="https://twitter.com/getbootstrap">Twitter</a>
-            </li>
-            <li>
-                <a href="../getting-started/#examples">Examples</a>
-            </li>
-            <li>
-                <a href="../about/">About</a>
-            </li>
-        </ul>
-        <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" target="_blank">@fat</a>. Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
-        <p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" rel="license" target="_blank">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel="license" target="_blank">CC BY 3.0</a>.</p>
-    </div>
-</footer>
-{% endblock %}
+header,
+main,
+nav {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+}
+
+img {
+  border: 0;
+}
+
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+button {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  overflow: visible;
+}
+
+button {
+  text-transform: none;
+}
+
+button {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+h2,
+h3 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h2,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+.lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 21px;
+  }
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-sm-3,
+.col-sm-4,
+.col-xs-6 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-xs-6 {
+  float: left;
+}
+
+.col-xs-6 {
+  width: 50%;
+}
+
+@media (min-width: 768px) {
+  .col-sm-3,
+  .col-sm-4 {
+    float: left;
+  }
+
+  .col-sm-4 {
+    width: 33.33333333%;
+  }
+
+  .col-sm-3 {
+    width: 25%;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn-lg {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+
+.collapse {
+  display: none;
+}
+
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav > li {
+  position: relative;
+  display: block;
+}
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-header {
+    float: left;
+  }
+}
+
+.navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+
+  .navbar-static-top .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.navbar-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px;
+}
+
+@media (min-width: 768px) {
+  .navbar-static-top {
+    border-radius: 0;
+  }
+}
+
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .navbar > .container .navbar-brand {
+    margin-left: -15px;
+  }
+}
+
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+.navbar-nav {
+  margin: 7.5px -15px;
+}
+
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-nav > li {
+    float: left;
+  }
+
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-right {
+    float: right !important;
+    margin-right: -15px;
+  }
+}
+
+.container:before,
+.container:after,
+.row:before,
+.row:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after {
+  display: table;
+  content: " ";
+}
+
+.container:after,
+.row:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after {
+  clear: both;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+}
+
+.navbar-static-top {
+  border-radius: 0;
+}
+
+body {
+  position: relative;
+  /* For scrollspy */
+}
+
+.btn-outline {
+  color: #563d7c;
+  background-color: transparent;
+  border-color: #563d7c;
+}
+
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #cdbfe3;
+}
+
+.bs-docs-booticon {
+  display: block;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  background-color: #563d7c;
+  border-radius: 15%;
+}
+
+.bs-docs-booticon-lg {
+  width: 144px;
+  height: 144px;
+  font-size: 108px;
+  line-height: 140px;
+}
+
+.bs-docs-booticon-outline {
+  background-color: transparent;
+  border: 1px solid #cdbfe3;
+}
+
+#skippy {
+  display: block;
+  padding: 1em;
+  color: #fff;
+  background-color: #6f5499;
+  outline: 0;
+}
+
+#skippy .skiplink-text {
+  padding: .5em;
+  outline: 1px dotted;
+}
+
+.bs-docs-nav {
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 0;
+}
+
+.bs-docs-nav .navbar-brand,
+.bs-docs-nav .navbar-nav > li > a {
+  font-weight: 500;
+  color: #563d7c;
+}
+
+.bs-docs-nav .navbar-toggle .icon-bar {
+  background-color: #563d7c;
+}
+
+.bs-docs-nav .navbar-header .navbar-toggle {
+  border-color: #fff;
+}
+
+.bs-docs-masthead {
+  position: relative;
+  padding: 30px 0;
+  color: #cdbfe3;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background-color: #6f5499;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#563d7c), to(#6f5499));
+  background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+  background-image: -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+  background-image: linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+  background-repeat: repeat-x;
+}
+
+.bs-docs-masthead .bs-docs-booticon {
+  margin: 0 auto 30px;
+}
+
+.bs-docs-masthead .lead {
+  margin: 0 auto 30px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.bs-docs-masthead .version {
+  margin-top: -15px;
+  margin-bottom: 30px;
+  color: #9783b9;
+}
+
+.bs-docs-masthead .btn {
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 20px;
+}
+
+@media (min-width: 480px) {
+  .bs-docs-masthead .btn {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .bs-docs-masthead {
+    padding: 80px 0;
+  }
+
+  .bs-docs-masthead .lead {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 992px) {
+  .bs-docs-masthead .lead {
+    width: 80%;
+    font-size: 30px;
+  }
+}
+
+.bs-docs-featurette {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.bs-docs-featurette-title {
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-weight: normal;
+  color: #333;
+}
+
+.half-rule {
+  width: 100px;
+  margin: 40px auto;
+}
+
+.bs-docs-featurette h3 {
+  margin-bottom: 5px;
+  font-weight: normal;
+  color: #333;
+}
+
+@media (min-width: 480px) {
+  .bs-docs-featurette .img-responsive {
+    margin-top: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bs-docs-featurette {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .bs-docs-featurette-title {
+    font-size: 40px;
+  }
+
+  .bs-docs-featurette .lead {
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .bs-docs-featurette .img-responsive {
+    margin-top: 0;
+  }
+}
+
+.bs-docs-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+.bs-docs-featured-sites .col-xs-6 {
+  padding: 1px;
+}
+
+.bs-docs-featured-sites .img-responsive {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .bs-docs-featured-sites .col-sm-3:first-child img {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .bs-docs-featured-sites .col-sm-3:last-child img {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
+
+.v4-tease {
+  display: block;
+  padding: 15px 20px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  background-color: #0275d8;
+}

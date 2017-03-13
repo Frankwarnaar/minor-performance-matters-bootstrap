@@ -2,7 +2,7 @@ const gulp     = require('gulp'),
 	critical   = require('critical'),
 	concat     = require('gulp-concat'),
 	cleanCss   = require('gulp-clean-css'),
-	injectHtml = require('gulp-inject-stringified-html');
+	fs         = require('fs');
 
 const config = {
 	srcPath: './src',
@@ -25,19 +25,16 @@ gulp.task('css:concat', () => {
 });
 
 gulp.task('css:critical', () => {
-	const getStringFromHtml = () => {
-		return { gulp_inject: `./index.html`};  // <-- and this!
-	};
-	const html = getStringFromHtml();
-	console.log(html);
-	// critical.generate({
-	// 	inline: true,
-	// 	base: './',
-	// 	html: gulp.src(`${config.srcPath}/index.html`),
-	// 	src: `${config.srcPath}/_base/layout.html`,
-	// 	css: [`${config.buildPath}/css/bundle.css`],
-	// 	dest: `${config.buildPath}/_base/layout.html`,
-	// 	width: 1920,
-	// 	height: 1080
-	// });
+	const html = fs.readFileSync(`${config.srcPath}/index.html`, 'utf8');
+
+	critical.generate({
+		inline: false,
+		base: './',
+		html: html,
+		src: `${config.srcPath}/_base/layout.html`,
+		css: [`${config.distPath}/css/bootstrap.css`,`${config.distPath}/css/bootstrap-theme.css`, `${config.assetsPath}/css/src/docs.css`],
+		dest: `${config.buildPath}/css/critical.css`,
+		width: 1920,
+		height: 1080
+	});
 });
