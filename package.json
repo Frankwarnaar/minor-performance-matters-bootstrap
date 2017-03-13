@@ -15,7 +15,8 @@
     "gulp-clean-css": "^3.0.3",
     "gulp-concat": "^2.6.1",
     "ngrok": "2.2.6",
-    "nodemon": "1.11.0"
+    "nodemon": "1.11.0",
+    "run-sequence": "^1.2.2"
   },
   "dependencies": {
     "body-parser": "1.15.2",

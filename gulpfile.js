@@ -1,6 +1,5 @@
 const gulp     = require('gulp'),
 	critical   = require('critical'),
-	concat     = require('gulp-concat'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs');
 
@@ -17,12 +16,6 @@ gulp.task('html:toString', function () {
 	.pipe(gulp.dest(`${config.buildPath}/index.html`));
 });
 
-gulp.task('css:concat', () => {
-	gulp.src([`${config.distPath}/css/**.css`, `${config.assetsPath}/css/src/docs.css`])
-		.pipe(concat('bundle.css'))
-		.pipe(cleanCss())
-		.pipe(gulp.dest(`${config.buildPath}/css`));
-});
 
 gulp.task('css:critical', () => {
 	const html = fs.readFileSync(`${config.srcPath}/index.html`, 'utf8');
@@ -37,4 +30,10 @@ gulp.task('css:critical', () => {
 		width: 1920,
 		height: 1080
 	});
+});
+
+gulp.task('css:minify', () => {
+	gulp.src(`${config.buildPath}/css/**.css`)
+	.pipe(cleanCss())
+	.pipe(gulp.dest(`${config.buildPath}/css`));
 });
