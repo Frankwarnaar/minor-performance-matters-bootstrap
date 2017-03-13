@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "expose": "ngrok http 3004"
   },
-  "author": "",
+  "author": "Frank Warnaar",
   "license": "ISC",
   "devDependencies": {
     "critical": "^0.8.4",
