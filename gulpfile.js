@@ -1,7 +1,8 @@
 const gulp     = require('gulp'),
 	critical   = require('critical'),
 	cleanCss   = require('gulp-clean-css'),
-	fs         = require('fs');
+	fs         = require('fs'),
+	rename     = require('gulp-rename');
 
 const config = {
 	srcPath: './src',
@@ -16,6 +17,9 @@ gulp.task('html:toString', function () {
 	.pipe(gulp.dest(`${config.buildPath}/index.html`));
 });
 
+gulp.task('css', () => {
+	sequence(['css:critical'], ['css:mininfy']);
+});
 
 gulp.task('css:critical', () => {
 	const html = fs.readFileSync(`${config.srcPath}/index.html`, 'utf8');
@@ -32,8 +36,9 @@ gulp.task('css:critical', () => {
 	});
 });
 
-gulp.task('css:minify', () => {
-	gulp.src(`${config.buildPath}/css/**.css`)
-	.pipe(cleanCss())
-	.pipe(gulp.dest(`${config.buildPath}/css`));
+gulp.task('css', ['css:critical'], () => {
+	gulp.src(`${config.buildPath}/css/critical.css`)
+		.pipe(cleanCss())
+		.pipe(rename('critical.min.css'))
+		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
