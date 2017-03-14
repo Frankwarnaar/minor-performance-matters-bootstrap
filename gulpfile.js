@@ -22,7 +22,7 @@ gulp.task('css', () => {
 });
 
 gulp.task('css:minify', () => {
-	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`])
+	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`, `${config.distPath}/css/*.css`])
 		.pipe(cleanCss())
 		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
