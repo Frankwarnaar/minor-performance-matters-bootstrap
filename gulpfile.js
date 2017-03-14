@@ -53,7 +53,17 @@ gulp.task('css', ['css:critical'], () => {
    ============================================================ */
 
 gulp.task('images', function () {
-  gulp.src(config.assetsPath + '/img/**')
-	.pipe(image())
-	.pipe(gulp.dest(config.buildPath + '/img'));
+ 	gulp.src([`${config.assetsPath}/img/*.jpg`,`${config.assetsPath}/img/*.png`])
+		.pipe(image({
+			pngquant: true,
+			optipng: false,
+			zopflipng: true,
+			jpegRecompress: true,
+			jpegoptim: true,
+			mozjpeg: true,
+			gifsicle: true,
+			svgo: true,
+			concurrent: 10
+		}))
+		.pipe(gulp.dest(config.buildPath + '/img'));
 });
