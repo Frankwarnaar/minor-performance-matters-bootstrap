@@ -5,7 +5,7 @@ const routeStatic = require('./lib/route-static');
 const redirectIndices = require('./lib/redirect-indices');
 
 const app = express();
-const baseDir = 'src';
+const baseDir = 'build';
 const port = process.env.PORT || 3004;
 
 app.set('etag', false);

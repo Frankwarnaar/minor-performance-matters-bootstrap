@@ -3,27 +3,45 @@ const gulp     = require('gulp'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
 	rename     = require('gulp-rename'),
-	image      = require('gulp-image');
+	image      = require('gulp-image'),
+	htmlmin    = require('gulp-htmlmin'),
+	uglify     = require('gulp-uglify');
 
 const config = {
 	srcPath: './src',
 	assetsPath: './src/assets',
 	distPath: `./src/dist`,
-	buildPath: './src/build'
+	buildPath: './build'
 };
 
-gulp.task('html:toString', function () {
-	return gulp.src([`${config.srcPath}/index.html`])
-	.pipe(injectHtml())
-	.pipe(gulp.dest(`${config.buildPath}/index.html`));
+/* ===========================================================
+	Html
+   ============================================================ */
+
+gulp.task('html:minify', () => {
+	gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(gulp.dest(config.buildPath));
+});
+
+/* ===========================================================
+	Js
+   ============================================================ */
+
+gulp.task('js', () => {
+	gulp.src(`${config.assetsPath}/js/docs.min.js`)
+		.pipe(uglify())
+		.pipe(gulp.dest(`${config.buildPath}/js`));
 });
 
 /* ===========================================================
 	Css
    ============================================================ */
 
-gulp.task('css', () => {
-	sequence(['css:critical'], ['css:mininfy']);
+gulp.task('css:minify', () => {
+	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`, `${config.distPath}/css/*.css`])
+		.pipe(cleanCss())
+		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
 
 gulp.task('css:critical', () => {
@@ -53,17 +71,7 @@ gulp.task('css', ['css:critical'], () => {
    ============================================================ */
 
 gulp.task('images', function () {
- 	gulp.src([`${config.assetsPath}/img/*.jpg`,`${config.assetsPath}/img/*.png`])
-		.pipe(image({
-			pngquant: true,
-			optipng: false,
-			zopflipng: true,
-			jpegRecompress: true,
-			jpegoptim: true,
-			mozjpeg: true,
-			gifsicle: true,
-			svgo: true,
-			concurrent: 10
-		}))
+ 	gulp.src([`${config.assetsPath}/img/*.**`])
+		// .pipe(image())
 		.pipe(gulp.dest(config.buildPath + '/img'));
 });
