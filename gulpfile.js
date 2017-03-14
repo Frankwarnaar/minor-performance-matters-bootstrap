@@ -21,6 +21,12 @@ gulp.task('css', () => {
 	sequence(['css:critical'], ['css:mininfy']);
 });
 
+gulp.task('css:minify', () => {
+	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`])
+		.pipe(cleanCss())
+		.pipe(gulp.dest(`${config.buildPath}/css/`));
+});
+
 gulp.task('css:critical', () => {
 	const html = fs.readFileSync(`${config.srcPath}/index.html`, 'utf8');
 
