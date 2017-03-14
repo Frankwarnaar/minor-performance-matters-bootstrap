@@ -2,19 +2,20 @@ const gulp     = require('gulp'),
 	critical   = require('critical'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
-	rename     = require('gulp-rename');
+	rename     = require('gulp-rename'),
+	htmlmin    = require('gulp-htmlmin');
 
 const config = {
 	srcPath: './src',
 	assetsPath: './src/assets',
 	distPath: `./src/dist`,
-	buildPath: './src/build'
+	buildPath: './build'
 };
 
-gulp.task('html:toString', function () {
-	return gulp.src([`${config.srcPath}/index.html`])
-	.pipe(injectHtml())
-	.pipe(gulp.dest(`${config.buildPath}/index.html`));
+gulp.task('html:minify', () => {
+	gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(gulp.dest(config.buildPath));
 });
 
 gulp.task('css', () => {
