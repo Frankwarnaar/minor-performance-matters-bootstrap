@@ -2,7 +2,8 @@ const gulp     = require('gulp'),
 	critical   = require('critical'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
-	rename     = require('gulp-rename');
+	rename     = require('gulp-rename'),
+	image      = require('gulp-image');
 
 const config = {
 	srcPath: './src',
@@ -16,6 +17,10 @@ gulp.task('html:toString', function () {
 	.pipe(injectHtml())
 	.pipe(gulp.dest(`${config.buildPath}/index.html`));
 });
+
+/* ===========================================================
+	Css
+   ============================================================ */
 
 gulp.task('css', () => {
 	sequence(['css:critical'], ['css:mininfy']);
@@ -41,4 +46,14 @@ gulp.task('css', ['css:critical'], () => {
 		.pipe(cleanCss())
 		.pipe(rename('critical.min.css'))
 		.pipe(gulp.dest(`${config.buildPath}/css/`));
+});
+
+/* ===========================================================
+	Images
+   ============================================================ */
+
+gulp.task('images', function () {
+  gulp.src(config.assetsPath + '/img/**')
+	.pipe(image())
+	.pipe(gulp.dest(config.buildPath + '/img'));
 });
