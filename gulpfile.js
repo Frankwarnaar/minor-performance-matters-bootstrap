@@ -1,11 +1,12 @@
 const gulp     = require('gulp'),
-	critical   = require('critical'),
+	critical   = require('critical').stream,
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
 	rename     = require('gulp-rename'),
 	image      = require('gulp-image'),
 	htmlmin    = require('gulp-htmlmin'),
-	uglify     = require('gulp-uglify');
+	uglify     = require('gulp-uglify'),
+	nunjucks   = require('gulp-nunjucks');
 
 const config = {
 	srcPath: './src',
@@ -17,6 +18,23 @@ const config = {
 /* ===========================================================
 	Html
    ============================================================ */
+
+gulp.task('html', () => {
+	// gulp.src([`${config.srcPath}/customize/*.html`])
+	// gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
+	gulp.src([`${config.srcPath}/*.html`])
+		.pipe(nunjucks.compile())
+		.pipe(critical({
+			inline: true,
+			base: './',
+			css: [`${config.distPath}/css/bootstrap.css`,`${config.distPath}/css/fonts.css`, `${config.assetsPath}/css/src/docs.css`],
+			minify: true,
+			width: 320,
+			height: 720
+		}))
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(gulp.dest(config.buildPath));
+});
 
 gulp.task('html:minify', () => {
 	gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
