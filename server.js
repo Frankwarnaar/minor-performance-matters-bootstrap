@@ -3,6 +3,7 @@ const nunjucks = require('nunjucks');
 const path = require('path');
 const routeStatic = require('./lib/route-static');
 const redirectIndices = require('./lib/redirect-indices');
+const compression = require('compression');
 
 const app = express();
 const baseDir = 'build';
@@ -14,6 +15,8 @@ app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 // static routes
 app.use(routeStatic);
 app.use('/static', express.static(path.join(__dirname, baseDir), { etag: false, lastModified: false }));
+
+app.use(compression());
 
 // dynamic pages
 app.use(redirectIndices);
