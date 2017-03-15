@@ -5,9 +5,11 @@
 With gulp I automated generated critical css. This reduced the time before the initial render.
 
 ![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/critical-css/before.png)
+
 Before
 
 ![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/critical-css/after.png)
+
 After
 
 ## 2. CDN usage
@@ -26,3 +28,11 @@ Js before
 ![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/cdn/js_after.png)
 Js after
 
+## 3. Minify css
+I minified the css files I cannot serve from a CDN
+
+![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/minify-css/before.png)
+Before
+
+![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/minify-css/after.png)
+After
