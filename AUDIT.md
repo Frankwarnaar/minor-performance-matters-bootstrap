@@ -43,3 +43,12 @@ Before
 
 ![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/minify-html/after.png)
 After
+
+## 5. Images converted to webp
+With gulp I converted all the images to the .webp format. Also I automated replacing images in the html with pictures. These pictures first try to use the .webp sources and fallback to the original compressed images.
+
+![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/before.png)
+Before
+
+![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/after.png)
+After
