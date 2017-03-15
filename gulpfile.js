@@ -3,9 +3,13 @@ const gulp     = require('gulp'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
 	rename     = require('gulp-rename'),
-	image      = require('gulp-image'),
+	imagemin   = require('gulp-imagemin'),
 	htmlmin    = require('gulp-htmlmin'),
-	uglify     = require('gulp-uglify');
+	uglify     = require('gulp-uglify'),
+	webp       = require('gulp-webp'),
+	webpHtml   = require('gulp-webp-html'),
+	plumber    = require('gulp-plumber'),
+	gutil      = require('gulp-util');
 
 const config = {
 	srcPath: './src',
@@ -14,12 +18,21 @@ const config = {
 	buildPath: './build'
 };
 
+const handleError = function(err) {
+	gutil.log(err);
+	this.emit('end');
+};
+
 /* ===========================================================
 	Html
    ============================================================ */
 
-gulp.task('html:minify', () => {
+gulp.task('html', () => {
 	gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
+		.pipe(plumber({
+			errorHandler: handleError
+		}))
+		.pipe(webpHtml())
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest(config.buildPath));
 });
@@ -38,10 +51,11 @@ gulp.task('js', () => {
 	Css
    ============================================================ */
 
-gulp.task('css:minify', () => {
-	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`, `${config.distPath}/css/*.css`])
-		.pipe(cleanCss())
-		.pipe(gulp.dest(`${config.buildPath}/css/`));
+gulp.task('css', ['css:critical'], () => {
+	gulp.src(`${config.buildPath}/css/critical.css`)
+	.pipe(cleanCss())
+	.pipe(rename('critical.min.css'))
+	.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
 
 gulp.task('css:minify', () => {
@@ -65,19 +79,30 @@ gulp.task('css:critical', () => {
 	});
 });
 
-gulp.task('css', ['css:critical'], () => {
-	gulp.src(`${config.buildPath}/css/critical.css`)
-		.pipe(cleanCss())
-		.pipe(rename('critical.min.css'))
-		.pipe(gulp.dest(`${config.buildPath}/css/`));
-});
-
 /* ===========================================================
 	Images
    ============================================================ */
 
-gulp.task('images', function () {
+gulp.task('images', ['images:compress', 'images:convert']);
+//
+// gulp.task('images:compress', () => {
+ // 	gulp.src([`${config.assetsPath}/img/*.**`])
+// 		.pipe(image())
+// 		.pipe(gulp.dest(config.buildPath + '/img'));
+// });
+
+gulp.task('images:compress', function() {
  	gulp.src([`${config.assetsPath}/img/*.**`])
-		// .pipe(image())
+		.pipe(imagemin({
+			optimizationLevel: 5,
+			progessive: true,
+			interlaced: true
+		}))
+		.pipe(gulp.dest(config.buildPath + '/img'));
+});
+
+gulp.task('images:convert', () => {
+ 	gulp.src([`${config.assetsPath}/img/*.**`])
+		.pipe(webp())
 		.pipe(gulp.dest(config.buildPath + '/img'));
 });
