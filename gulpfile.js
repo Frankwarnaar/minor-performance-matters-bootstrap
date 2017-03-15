@@ -2,23 +2,46 @@ const gulp     = require('gulp'),
 	critical   = require('critical'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
-	rename     = require('gulp-rename');
+	rename     = require('gulp-rename'),
+	image      = require('gulp-image'),
+	htmlmin    = require('gulp-htmlmin'),
+	uglify     = require('gulp-uglify');
 
 const config = {
 	srcPath: './src',
 	assetsPath: './src/assets',
 	distPath: `./src/dist`,
-	buildPath: './src/build'
+	buildPath: './build'
 };
 
-gulp.task('html:toString', function () {
-	return gulp.src([`${config.srcPath}/index.html`])
-	.pipe(injectHtml())
-	.pipe(gulp.dest(`${config.buildPath}/index.html`));
+/* ===========================================================
+	Html
+   ============================================================ */
+
+gulp.task('html:minify', () => {
+	gulp.src([`${config.srcPath}/*.html`, `${config.srcPath}/**/*.html`])
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(gulp.dest(config.buildPath));
 });
 
-gulp.task('css', () => {
-	sequence(['css:critical'], ['css:mininfy']);
+/* ===========================================================
+	Js
+   ============================================================ */
+
+gulp.task('js', () => {
+	gulp.src(`${config.assetsPath}/js/docs.min.js`)
+		.pipe(uglify())
+		.pipe(gulp.dest(`${config.buildPath}/js`));
+});
+
+/* ===========================================================
+	Css
+   ============================================================ */
+
+gulp.task('css:minify', () => {
+	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`, `${config.distPath}/css/*.css`])
+		.pipe(cleanCss())
+		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
 
 gulp.task('css:minify', () => {
@@ -47,4 +70,14 @@ gulp.task('css', ['css:critical'], () => {
 		.pipe(cleanCss())
 		.pipe(rename('critical.min.css'))
 		.pipe(gulp.dest(`${config.buildPath}/css/`));
+});
+
+/* ===========================================================
+	Images
+   ============================================================ */
+
+gulp.task('images', function () {
+ 	gulp.src([`${config.assetsPath}/img/*.**`])
+		// .pipe(image())
+		.pipe(gulp.dest(config.buildPath + '/img'));
 });
