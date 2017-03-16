@@ -52,3 +52,11 @@ Before
 
 ![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/after.png)
 After
+
+## 6. Gzip static files
+
+![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/gzip/before.png)
+Before
+
+![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/gzip/after.png)
+After
