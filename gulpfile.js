@@ -9,7 +9,8 @@ const gulp     = require('gulp'),
 	webp       = require('gulp-webp'),
 	webpHtml   = require('gulp-webp-html'),
 	plumber    = require('gulp-plumber'),
-	gutil      = require('gulp-util');
+	gutil      = require('gulp-util'),
+	concat     = require('gulp-concat');
 
 const config = {
 	srcPath: './src',
@@ -51,20 +52,20 @@ gulp.task('js', () => {
 	Css
    ============================================================ */
 
-gulp.task('css', ['css:critical'], () => {
-	gulp.src(`${config.buildPath}/css/critical.css`)
-	.pipe(cleanCss())
-	.pipe(rename('critical.min.css'))
-	.pipe(gulp.dest(`${config.buildPath}/css/`));
-});
-
 gulp.task('css:minify', () => {
 	gulp.src([`${config.assetsPath}/css/*.css`, `${config.assetsPath}/css/**/*.css`, `${config.distPath}/css/*.css`])
 		.pipe(cleanCss())
 		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
 
-gulp.task('css:critical', () => {
+gulp.task('css:critical', ['css:critical-generate'], () => {
+	gulp.src(`${config.buildPath}/css/critical.css`)
+	.pipe(cleanCss())
+	.pipe(rename('critical.min.css'))
+	.pipe(gulp.dest(`${config.buildPath}/css/`));
+});
+
+gulp.task('css:critical-generate', () => {
 	const html = fs.readFileSync(`${config.srcPath}/index.html`, 'utf8');
 
 	critical.generate({
@@ -77,6 +78,13 @@ gulp.task('css:critical', () => {
 		width: 1920,
 		height: 1080
 	});
+});
+
+gulp.task('css:concat', () => {
+	gulp.src([`${config.distPath}/css/fonts.css`, `${config.assetsPath}/css/src/docs.css`])
+		.pipe(concat('bundle.css'))
+		.pipe(cleanCss())
+		.pipe(gulp.dest(`${config.buildPath}/css/`));
 });
 
 /* ===========================================================
