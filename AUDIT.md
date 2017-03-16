@@ -50,8 +50,11 @@ With gulp I converted all the images to the .webp format. Also I automated repla
 ![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/before.png)
 Before
 
-![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/after.png)
-After
+![After compression](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/after_compress.png)
+After (original mimetypes)
+
+![After webp](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/compress-images/after_webp.png)
+After (webp)
 
 ## 6. Gzip static files
 
