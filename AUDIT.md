@@ -66,3 +66,16 @@ Before
 
 ![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/gzip/after.png)
 After
+
+## 7. Concat css files
+![Before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/concat/before.png)
+Before
+
+![After](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/concat/after.png)
+After
+
+![Page speed insights - before](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/concat/gps_before.png)
+Page speed insights - before
+
+![Page speed insights - after](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/audits/concat/gps_after.png)
+Page speed insights - after
