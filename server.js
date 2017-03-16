@@ -10,13 +10,13 @@ const baseDir = 'build';
 const port = process.env.PORT || 3004;
 
 app.set('etag', false);
+app.use(compression());
 app.use((req, res, next) => { res.removeHeader('X-Powered-By'); next(); });
 
 // static routes
 app.use(routeStatic);
 app.use('/static', express.static(path.join(__dirname, baseDir), { etag: false, lastModified: false }));
 
-app.use(compression());
 
 // dynamic pages
 app.use(redirectIndices);
