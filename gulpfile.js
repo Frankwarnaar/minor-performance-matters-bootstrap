@@ -3,7 +3,7 @@ const gulp     = require('gulp'),
 	cleanCss   = require('gulp-clean-css'),
 	fs         = require('fs'),
 	rename     = require('gulp-rename'),
-	imagemin   = require('gulp-imagemin'),
+	responsive = require('gulp-responsive'),
 	htmlmin    = require('gulp-htmlmin'),
 	uglify     = require('gulp-uglify'),
 	webp       = require('gulp-webp'),
@@ -84,19 +84,21 @@ gulp.task('css:critical', () => {
    ============================================================ */
 
 gulp.task('images', ['images:compress', 'images:convert']);
-//
-// gulp.task('images:compress', () => {
- // 	gulp.src([`${config.assetsPath}/img/*.**`])
-// 		.pipe(image())
-// 		.pipe(gulp.dest(config.buildPath + '/img'));
-// });
 
 gulp.task('images:compress', function() {
  	gulp.src([`${config.assetsPath}/img/*.**`])
-		.pipe(imagemin({
-			optimizationLevel: 5,
-			progessive: true,
-			interlaced: true
+		.pipe(responsive([
+			{
+				name: '*.png',
+				width: 1000
+			},
+			{
+				name: '*.jpg',
+				width: 800
+			}
+		], {
+			quality: 50,
+			errorOnUnusedImage: false
 		}))
 		.pipe(gulp.dest(config.buildPath + '/img'));
 });
