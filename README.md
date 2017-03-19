@@ -1,5 +1,8 @@
 # Performance matters
 
+## Improvements
+[Improvements here](https://github.com/Frankwarnaar/minor-performance-matters-bootstrap/blob/master/AUDIT.md)
+
 ## Project setup
 
 This project serves an adapted version of the [Bootstrap documentation website](http://getbootstrap.com/). It is based on the [github pages branche of Bootstrap](https://github.com/twbs/bootstrap/tree/gh-pages). 
